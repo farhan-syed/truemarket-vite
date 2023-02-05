@@ -1,10 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import NotFound from './pages/NotFound'
+import NotFound from './pages/NotFound';
 import Home from './pages/Home';
 
-
-function App() {
+export function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -13,7 +12,7 @@ function App() {
   );
 }
 
-function WrappedApp() {
+export function WrappedApp() {
   return (
     <BrowserRouter>
       <App />

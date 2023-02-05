@@ -1,5 +1,12 @@
+import NavigationBar from '../components/NavigationBar';
+
 function Home() {
-  return <h1>Vite + React</h1>;
+  return (
+    <>
+      <NavigationBar />
+      <h1>Vite + React</h1>
+    </>
+  );
 }
 
 export default Home;
