@@ -1,4 +1,10 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useAuth0 } from '@auth0/auth0-react';
+
 function NavigationBar() {
+  const {
+    isAuthenticated, user, loginWithRedirect, logout,
+  } = useAuth0();
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
@@ -11,9 +17,9 @@ function NavigationBar() {
           <li>
             <a href="/search">Search</a>
           </li>
-          {/* {isAuthenticated ? (
+          {isAuthenticated ? (
             <li tabIndex={0}>
-              <a>
+              <a href="/#">
                 {user.nickname}
                 <svg
                   className="fill-current"
@@ -33,15 +39,15 @@ function NavigationBar() {
                   <a href="/#">My Posts</a>
                 </li>
                 <li>
-                  <button onClick={() => logout()}>Logout</button>
+                  <button type="button" onClick={() => logout()}>Logout</button>
                 </li>
               </ul>
             </li>
           ) : (
             <li>
-              <button onClick={() => loginWithRedirect()}>Login</button>
+              <button type="button" onClick={() => loginWithRedirect()}>Login</button>
             </li>
-          )} */}
+          )}
         </ul>
       </div>
     </div>
