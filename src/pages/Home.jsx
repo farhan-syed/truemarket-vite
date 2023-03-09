@@ -1,10 +1,14 @@
 import NavigationBar from '../components/NavigationBar';
+import HomeHero from '../components/HomeHero';
 
 function Home() {
   return (
     <>
-      <NavigationBar />
-      <h1>Vite + React</h1>
+      <div className="container min-w-full">
+        <NavigationBar />
+        <HomeHero />
+      </div>
+      {/* <h1>Vite + React</h1> */}
     </>
   );
 }
