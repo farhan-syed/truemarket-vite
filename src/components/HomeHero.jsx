@@ -1,17 +1,11 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function HomeHero() {
-  const [query, setQuery] = useState('');
   const navigate = useNavigate();
 
   function search() {
-    navigate('/search', { state: { query } });
+    navigate('/search');
   }
-
-  const handleChange = (event) => {
-    setQuery(event.target.value);
-  };
 
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -22,16 +16,10 @@ function HomeHero() {
             Compare recent local car purchases to help make the best decision
             on your next car
           </p>
-          <div className="form-control shadow-md">
-            <div className="input-group justify-center">
-              <input
-                type="text"
-                placeholder="BMW M550i in 92602"
-                value={query || ''}
-                onChange={handleChange}
-                className="input input-bordered w-full"
-              />
-              <button className="btn btn-square" type="button" onClick={search}>
+          <div className="form-control">
+            <div className="justify-center">
+              <button className="btn btn-success gap-3" type="button" onClick={search}>
+                Begin your search
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
