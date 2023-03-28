@@ -6,16 +6,16 @@ function NavigationBar() {
     isAuthenticated, user, loginWithRedirect, logout,
   } = useAuth0();
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100p">
       <div className="flex-1">
         <a href="/" className="btn btn-ghost normal-case text-xl">
-          TrueMarket
+          truemarket
         </a>
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a href="/search">Search</a>
+            <a href="/search">search</a>
           </li>
           {isAuthenticated ? (
             <li tabIndex={0}>
@@ -33,19 +33,19 @@ function NavigationBar() {
               </a>
               <ul className="p-2 bg-base-100">
                 <li>
-                  <a href="/post/new">New Post</a>
+                  <a href="/post/new">new post</a>
                 </li>
                 <li>
-                  <a href="/#">My Posts</a>
+                  <a href="/#">my posts</a>
                 </li>
                 <li>
-                  <button type="button" onClick={() => logout()}>Logout</button>
+                  <button type="button" onClick={() => logout()}>logout</button>
                 </li>
               </ul>
             </li>
           ) : (
             <li>
-              <button type="button" onClick={() => loginWithRedirect()}>Login</button>
+              <button type="button" onClick={() => loginWithRedirect()}>login</button>
             </li>
           )}
         </ul>

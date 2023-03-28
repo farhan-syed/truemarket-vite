@@ -23,14 +23,19 @@ function Hit({ hit }) {
       <div>
         <div className="card-body">
           <h2 className="card-title">
-            <div className="badge badge-primary">{hit.condition}</div>
+            <div className="badge badge-success">{hit.condition}</div>
             {`${hit.car.year} ${hit.car.make} ${hit.car.trim}`}
           </h2>
           {date.toLocaleDateString()}
           <p>{hit.options}</p>
           <p>{formatMoney(hit.total_cost)}</p>
           <div className="card-actions justify-end">
-            <Link to={`/post/${hit.objectID}`} className="btn btn-primary">View</Link>
+            <Link
+              to={`/post/${hit.objectID}`}
+              className="btn btn-primary btn-sm"
+            >
+              View
+            </Link>
           </div>
         </div>
       </div>
@@ -44,7 +49,7 @@ const queryHook = (query, search) => {
 
 function SubmitIcon() {
   return (
-    <div className="btn btn-square w-14">
+    <div className="btn rounded-l-none w-14 btn-success">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-6 w-6"
@@ -87,12 +92,12 @@ function Search() {
           resetIconComponent={ResetIcon}
           queryHook={queryHook}
           classNames={{
-            root: 'grid grid-row-1 justify-center form-control p-24', form: 'input-group', input: 'input input-bordered w-96', loadingIndicator: 'hidden',
+            root: 'grid grid-row-1 justify-center form-control p-24', form: 'input-group', input: 'input input-bordered border-2 w-96', submit: 'rounded-none', loadingIndicator: 'hidden',
           }}
         />
         <EmptyQueryBoundary fallback={null}>
           <Hits
-            classNames={{ list: 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 px-16 2xl:px-72 pb-14', item: 'card bg-base-100 shadow-md' }}
+            classNames={{ list: 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 px-16 2xl:px-72 pb-14', item: 'card bg-base-100 shadow-xl' }}
             hitComponent={Hit}
           />
         </EmptyQueryBoundary>
