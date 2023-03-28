@@ -10,16 +10,15 @@ function HomeHero() {
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content text-center">
-        <div className="max-w-md">
-          <h1 className="text-5xl font-bold">Avoid Overpaying</h1>
-          <p className="py-6 text-lg">
-            Compare recent local car purchases to help make the best decision
-            on your next car
+        <div className="max-w-2xl">
+          <h1 className="text-7xl font-bold">Avoid Overpaying</h1>
+          <p className="py-6 text-2xl">
+            Make smart car buying decisions
           </p>
           <div className="form-control">
             <div className="justify-center">
-              <button className="btn btn-success gap-3" type="button" onClick={search}>
-                Begin your search
+              <button className="btn btn-success btn-md gap-3" type="button" onClick={search}>
+                Start your search
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
