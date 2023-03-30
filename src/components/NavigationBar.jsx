@@ -6,7 +6,7 @@ function NavigationBar() {
     isAuthenticated, user, loginWithRedirect, logout,
   } = useAuth0();
   return (
-    <div className="navbar bg-base-100p">
+    <div className="navbar bg-base-200">
       <div className="flex-1">
         <a href="/" className="btn btn-ghost normal-case text-xl">
           truemarket
@@ -19,7 +19,7 @@ function NavigationBar() {
           </li>
           {isAuthenticated ? (
             <li tabIndex={0}>
-              <a href="/#">
+              <a href="/">
                 {user.nickname}
                 <svg
                   className="fill-current"
@@ -31,7 +31,7 @@ function NavigationBar() {
                   <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
                 </svg>
               </a>
-              <ul className="p-2 bg-base-100">
+              <ul className="p-2 bg-base-200">
                 <li>
                   <a href="/post/new">new post</a>
                 </li>

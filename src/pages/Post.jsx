@@ -45,10 +45,10 @@ function Post() {
       <div className="container min-w-full">
         <NavigationBar />
         <div className="hero min-h-screen bg-base-200">
-          <div className="hero-content flex-col lg:flex-col my-14">
+          <div className="hero-content flex-col lg:flex-col">
             <div className="w-full">
               <p className="py-2">
-                <span className="badge badge-success">{post.condition}</span>
+                <span className="badge badge-primary">{post.condition}</span>
               </p>
               <h1 className="text-5xl lg:text-6xl font-semibold">
                 {post.car.year}
@@ -71,7 +71,7 @@ function Post() {
               <img src={post.image_url} className="object-scale-down rounded-lg shadow-2xl mb-4" alt="Purchase Info" />
             </div>
 
-            <div className="stats stats-vertical xl:stats-horizontal bg-secondary text-secondary-content w-full">
+            <div className="stats stats-vertical xl:stats-horizontal bg-secondary text-secondary-content dark:text-primary-content w-full">
               <div className="stat">
                 <div className="stat-title">MSRP</div>
                 <div className="stat-value">{formatMoney(post.msrp)}</div>
@@ -88,7 +88,7 @@ function Post() {
                 <div className="stat-title">Other Fees</div>
                 <div className="stat-value">{formatMoney(post.fees)}</div>
               </div>
-              <div className="stat bg-success text-black">
+              <div className="stat bg-success text-primary dark:text-black">
                 <div className="stat-title">Total</div>
                 <div className="stat-value">{totalCost(post.msrp, post.market_adjustment, post.fees, post.tax)}</div>
               </div>

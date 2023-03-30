@@ -23,7 +23,7 @@ function Hit({ hit }) {
       <div>
         <div className="card-body">
           <h2 className="card-title">
-            <div className="badge badge-success">{hit.condition}</div>
+            <div className="badge badge-primary">{hit.condition}</div>
             {`${hit.car.year} ${hit.car.make} ${hit.car.trim}`}
           </h2>
           {date.toLocaleDateString()}
@@ -49,7 +49,7 @@ const queryHook = (query, search) => {
 
 function SubmitIcon() {
   return (
-    <div className="btn rounded-l-none w-14 btn-success">
+    <div className="btn rounded-l-none w-14 btn-primary">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-6 w-6"
@@ -81,7 +81,7 @@ function EmptyQueryBoundary({ children, fallback }) {
 
 function Search() {
   return (
-    <>
+    <div className="container min-w-full min-h-screen bg-base-200">
       <NavigationBar />
       <InstantSearch searchClient={searchClient} indexName="post">
         <SearchBox
@@ -92,7 +92,7 @@ function Search() {
           resetIconComponent={ResetIcon}
           queryHook={queryHook}
           classNames={{
-            root: 'grid grid-row-1 justify-center form-control p-24', form: 'input-group', input: 'input input-bordered border-2 w-96', submit: 'rounded-none', loadingIndicator: 'hidden',
+            root: 'grid grid-row-1 justify-center form-control my-10', form: 'input-group', input: 'input input-bordered border-2 w-96', submit: 'rounded-none', loadingIndicator: 'hidden',
           }}
         />
         <EmptyQueryBoundary fallback={null}>
@@ -102,7 +102,7 @@ function Search() {
           />
         </EmptyQueryBoundary>
       </InstantSearch>
-    </>
+    </div>
   );
 }
 export default Search;
