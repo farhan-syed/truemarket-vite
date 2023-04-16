@@ -3,18 +3,21 @@ import NavigationBar from '../components/NavigationBar';
 import NewPostForm from '../components/NewPostForm';
 
 function NewPost() {
-  const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const { isLoading, isAuthenticated, loginWithRedirect } = useAuth0();
 
-  if (!isAuthenticated) {
-    return loginWithRedirect();
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
-  return (
-    <div className="container min-w-full">
-      <NavigationBar />
-      <NewPostForm />
-    </div>
-  );
+  if (isAuthenticated) {
+    return (
+      <div className="container min-w-full">
+        <NavigationBar />
+        <NewPostForm />
+      </div>
+    );
+  }
+  return loginWithRedirect();
 }
 
 export default NewPost;
