@@ -72,6 +72,16 @@ function NewPostForm() {
     return 75;
   };
 
+  function returnCurrentPage() {
+    if (page === 0 && formData.purchase_date !== '' && formData.zipcode !== null && (formData.condition !== '' && formData.condition !== 'select one')) {
+      setPage((current) => current + 1);
+    } else if (page === 1 && (formData.year !== '' && formData.year !== 'select') && formData.make !== '' && formData.model !== '' && formData.trim !== '' && formData.transmission !== '' && formData.engine !== '') {
+      setPage((current) => current + 1);
+    } else if (page === 2 && formData.options !== '' && formData.msrp !== null && formData.down_payment !== null && formData.tax !== null && formData.market_adjustment !== null && formData.fees !== null) {
+      setPage((current) => current + 1);
+    }
+  }
+
   const navigate = useNavigate();
   const { user } = useAuth0();
   function createPost() {
@@ -87,7 +97,6 @@ function NewPostForm() {
       data,
     })
       .then((response) => {
-        // console.log(response);
         const id = response.data;
         navigate(`/post/${id}`);
       })
@@ -112,7 +121,8 @@ function NewPostForm() {
               className="btn mt-5 w-full"
               id="next-btn"
               onClick={() => {
-                setPage((current) => current + 1);
+                // setPage((current) => current + 1);
+                returnCurrentPage();
               }}
               disabled={page === steps - 1}
             >

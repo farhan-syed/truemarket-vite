@@ -51,6 +51,7 @@ function Step1({
           value={formData.condition}
           onChange={handleChange}
         >
+          <option>select one</option>
           <option>New</option>
           <option>Used</option>
         </select>
