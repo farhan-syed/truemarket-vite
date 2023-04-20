@@ -6,14 +6,6 @@ import { useAuth0 } from '@auth0/auth0-react';
 import NavigationBar from '../components/NavigationBar';
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
-function useFetcher() {
-  const { data, error, isLoading } = useSWR(`http://localhost:3000/api/posts/user/${'auth0|63cf4e75074fbc39986a4cdd'}`, fetcher);
-  return {
-    posts: data,
-    isLoading,
-    isError: error,
-  };
-}
 
 function formatMoney(num) {
   const amount = num / 100;
@@ -69,8 +61,9 @@ function Card({ list }) {
 }
 
 function Posts() {
-  const { posts, isLoading } = useFetcher();
-  if (isLoading) return <h1>loading</h1>;
+  const { user } = useAuth0();
+  const { data: posts } = useSWR(() => `http://localhost:3000/api/posts/user/${user.sub}`, fetcher);
+  if (!posts) return 'loading...';
   return (
     <div className="container min-w-full min-h-screen bg-base-200">
       <NavigationBar />
