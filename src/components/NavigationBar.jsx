@@ -36,7 +36,7 @@ function NavigationBar() {
                   <a href="/post/new">new post</a>
                 </li>
                 <li>
-                  <a href="/#">my posts</a>
+                  <a href="/posts/me">my posts</a>
                 </li>
                 <li>
                   <button type="button" onClick={() => logout()}>logout</button>
