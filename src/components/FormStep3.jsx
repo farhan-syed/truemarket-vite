@@ -1,7 +1,9 @@
+import CurrencyInput from 'react-currency-input-field';
+
 function Step3({
   formData, setFormData, image, setImage,
 }) {
-  const handleChange = (event) => {
+  const handleTextChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevState) => ({
       ...prevState,
@@ -26,7 +28,7 @@ function Step3({
           className="textarea textarea-bordered h-24"
           placeholder="ex. Shadowline Package"
           value={formData.options}
-          onChange={handleChange}
+          onChange={handleTextChange}
         />
       </div>
 
@@ -34,55 +36,28 @@ function Step3({
         <label htmlFor="msrp" className="label">
           <span className="label-text">msrp</span>
         </label>
-        <input
-          type="text"
-          name="msrp"
-          className="input input-bordered"
-          value={formData.msrp || ''}
-          onChange={handleChange}
-        />
+        <CurrencyInput className="input input-bordered" name="msrp" prefix="$" defaultValue={formData.msrp || ''} onValueChange={(value, name) => setFormData((prevState) => ({ ...prevState, [name]: value }))} />
       </div>
 
       <div className="form-control w-full">
         <label htmlFor="tax" className="label">
           <span className="label-text">tax</span>
         </label>
-        <input
-          type="text"
-          name="tax"
-          placeholder=""
-          className="input input-bordered"
-          value={formData.tax || ''}
-          onChange={handleChange}
-        />
+        <CurrencyInput className="input input-bordered" name="tax" prefix="$" defaultValue={formData.tax || ''} onValueChange={(value, name) => setFormData((prevState) => ({ ...prevState, [name]: value }))} />
       </div>
 
       <div className="form-control w-full">
         <label htmlFor="market_adjustment" className="label">
           <span className="label-text">market adjustment</span>
         </label>
-        <input
-          type="text"
-          name="market_adjustment"
-          placeholder=""
-          className="input input-bordered"
-          value={formData.market_adjustment || ''}
-          onChange={handleChange}
-        />
+        <CurrencyInput className="input input-bordered" name="market_adjustment" prefix="$" defaultValue={formData.market_adjustment || ''} onValueChange={(value, name) => setFormData((prevState) => ({ ...prevState, [name]: value }))} />
       </div>
 
       <div className="form-control w-full">
         <label htmlFor="fees" className="label">
           <span className="label-text">fees</span>
         </label>
-        <input
-          type="text"
-          name="fees"
-          placeholder=""
-          className="input input-bordered"
-          value={formData.fees || ''}
-          onChange={handleChange}
-        />
+        <CurrencyInput className="input input-bordered" name="fees" prefix="$" defaultValue={formData.fees || ''} onValueChange={(value, name) => setFormData((prevState) => ({ ...prevState, [name]: value }))} />
       </div>
 
       <div className="form-control w-full">
