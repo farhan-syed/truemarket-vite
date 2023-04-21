@@ -17,6 +17,9 @@ function NavigationBar() {
           <li>
             <a href="/search">search</a>
           </li>
+          <li>
+            <a href="/post/new">post</a>
+          </li>
           {isAuthenticated ? (
             <li tabIndex={0}>
               <a href="/">
@@ -36,7 +39,7 @@ function NavigationBar() {
                   <a href="/post/new">new post</a>
                 </li>
                 <li>
-                  <a href="/#">my posts</a>
+                  <a href="/posts/me">my posts</a>
                 </li>
                 <li>
                   <button type="button" onClick={() => logout()}>logout</button>
