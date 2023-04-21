@@ -17,6 +17,9 @@ function NavigationBar() {
           <li>
             <a href="/search">search</a>
           </li>
+          <li>
+            <a href="/post/new">post</a>
+          </li>
           {isAuthenticated ? (
             <li tabIndex={0}>
               <a href="/">

@@ -61,15 +61,25 @@ function Card({ list }) {
 }
 
 function Posts() {
-  const { user } = useAuth0();
+  const {
+    user, isAuthenticated, isLoading, loginWithRedirect,
+  } = useAuth0();
   const { data: posts } = useSWR(() => `http://localhost:3000/api/posts/user/${user.sub}`, fetcher);
-  if (!posts) return 'loading...';
+  if (isLoading) return 'loading...';
+  if (!isAuthenticated) {
+    return loginWithRedirect();
+  }
+  if (!posts) {
+    return 'loading...';
+  }
   return (
+    isAuthenticated && (
     <div className="container min-w-full min-h-screen bg-base-200">
       <NavigationBar />
       <h1 className="text-5xl font-bold pt-16 px-16 2xl:px-72">My Posts</h1>
       <Card list={posts} />
     </div>
+    )
   );
 }
 
