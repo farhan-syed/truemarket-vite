@@ -25,8 +25,8 @@ export function App() {
 export function WrappedApp() {
   return (
     <Auth0Provider
-      domain="dev-truemarket.us.auth0.com"
-      clientId="Dl5XBOcZLI7pv7IlvsQUF8WSvy4xebsE"
+      domain={import.meta.env.VITE_AUTH0_DOMAIN}
+      clientId={import.meta.env.VITE_AUTH0_CLIENT}
       authorizationParams={{
         redirect_uri: window.location.origin,
       }}
