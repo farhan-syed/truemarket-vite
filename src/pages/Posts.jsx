@@ -21,7 +21,6 @@ function totalCost(msrp, marketAdjustment, fees, tax) {
 }
 
 function CardItem({ item }) {
-  console.log(item);
   const date = new Date(item.purchase_date);
   return (
     <div className="card-body bg-base-100 shadow-xl">
