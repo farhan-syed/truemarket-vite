@@ -87,11 +87,10 @@ function Search() {
   async function fetch(text) {
     const reformatted = text.replace(/\s/g, '&');
     try {
-      const response = await axios.get(`http://localhost:3000/api/search/${reformatted}`);
-      console.log(response.data)
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/search/${reformatted}`);
       setList(response.data);
     } catch (error) {
-      console.log(error);
+      alert('there was an error, please try again.');
     }
   }
 

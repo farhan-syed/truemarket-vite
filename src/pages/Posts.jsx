@@ -64,7 +64,7 @@ function Posts() {
   const {
     user, isAuthenticated, isLoading, loginWithRedirect,
   } = useAuth0();
-  const { data: posts } = useSWR(() => `http://localhost:3000/api/posts/user/${user.sub}`, fetcher);
+  const { data: posts } = useSWR(() => `${import.meta.env.VITE_API_URL}/api/posts/user/${user.sub}`, fetcher);
   if (isLoading) return 'loading...';
   if (!isAuthenticated) {
     return loginWithRedirect();

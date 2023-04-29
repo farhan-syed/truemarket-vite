@@ -85,7 +85,7 @@ function NewPostForm() {
   const navigate = useNavigate();
   const { user } = useAuth0();
   function createPost() {
-    const url = 'http://localhost:3000/api/posts';
+    const url = `${import.meta.env.VITE_API_URL}/api/posts`;
     const data = new FormData();
     data.append('body', JSON.stringify(formData));
     data.append('file', image);
