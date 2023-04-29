@@ -7,7 +7,7 @@ import NavigationBar from '../components/NavigationBar';
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 function useFetcher() {
   const { id } = useParams();
-  const { data, error, isLoading } = useSWR(`http://localhost:3000/api/posts/${id}`, fetcher);
+  const { data, error, isLoading } = useSWR(`${import.meta.env.VITE_API_URL}/api/posts/${id}`, fetcher);
   return {
     post: data,
     isLoading,
