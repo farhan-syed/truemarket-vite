@@ -51,7 +51,7 @@ function CardItem({ item }) {
 
 function Card({ list }) {
   return (
-    <div className="grid grid-cols-1 place-content-center sm:grid-cols-2 xl:grid-cols-4 gap-5 px-16 2xl:px-72 pb-14 pt-10">
+    <div className="grid grid-cols-1 place-content-center sm:grid-cols-2 xl:grid-cols-3 gap-5 px-16 2xl:px-72 pb-14 pt-10">
       {list.map((item) => (
         <CardItem item={item} key={item.id} />
       ))}
@@ -73,7 +73,7 @@ function Posts() {
   }
   return (
     isAuthenticated && (
-    <div className="container min-w-full min-h-screen bg-base-200">
+    <div className="container mx-auto min-h-screen bg-base-200">
       <NavigationBar />
       <h1 className="text-5xl font-bold pt-16 px-16 2xl:px-72">My Posts</h1>
       <Card list={posts} />

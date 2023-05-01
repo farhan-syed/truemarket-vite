@@ -41,9 +41,9 @@ function Post() {
 
   const date = new Date(post.purchase_date);
   return (
-    <div className="container min-w-full">
+    <div className="container mx-auto">
       <NavigationBar />
-      <div className="hero min-h-screen bg-base-200">
+      <div className="hero min-h-screen bg-base-200 mt-7">
         <div className="hero-content flex-col lg:flex-col">
           <div className="w-full">
 
