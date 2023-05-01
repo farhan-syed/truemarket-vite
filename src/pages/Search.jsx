@@ -17,10 +17,10 @@ function SearchInput(props) {
     props.callback(searchText);
   };
   return (
-    <div className="grid grid-row-1 place-content-center py-10">
+    <div className="grid grid-row-1 place-content-center my-20">
       <div className="form-control">
         <div className="input-group">
-          <input type="text" placeholder="Search 'BMW M550i in 92602'" className="input input-bordered border-2 w-96" onChange={(e) => { setSearchText(e.target.value); }} />
+          <input type="text" placeholder="Search 'BMW M550i in 92602'" className="input input-bordered border-2 w-auto md:w-96" onChange={(e) => { setSearchText(e.target.value); }} />
           <button
             type="button"
             className="btn btn-square"
@@ -73,7 +73,7 @@ function CardItem({ item }) {
 
 function Card({ list }) {
   return (
-    <div className="grid grid-cols-1 place-content-center sm:grid-cols-2 xl:grid-cols-4 gap-5 px-16 2xl:px-72 pb-14">
+    <div className="grid grid-cols-1 place-content-center sm:grid-cols-2 xl:grid-cols-3 gap-5 px-16 2xl:px-72 pb-14">
       {list.map((item) => (
         <CardItem item={item} key={item.id} />
       ))}
@@ -99,7 +99,7 @@ function Search() {
   };
 
   return (
-    <div className="container min-w-full min-h-screen bg-base-200">
+    <div className="container mx-auto min-h-screen bg-base-200">
       <NavigationBar />
       <SearchInput callback={searchCallback} />
       <Card list={list} />
