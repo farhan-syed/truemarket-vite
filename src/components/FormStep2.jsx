@@ -20,13 +20,9 @@ function Step2({ formData, setFormData }) {
           onChange={handleChange}
         >
           <option>select</option>
+          <option>2024</option>
           <option>2023</option>
           <option>2022</option>
-          <option>2021</option>
-          <option>2020</option>
-          <option>2019</option>
-          <option>2018</option>
-          <option>2017</option>
         </select>
       </div>
 

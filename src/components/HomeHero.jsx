@@ -17,7 +17,7 @@ function HomeHero() {
         <div className="mx-auto">
           <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold">Avoid Overpaying</h1>
           <p className="my-6 text-md md:text-lg lg:text-2xl">
-            Be informed. Make smarter car buying decisions.
+            find out what others are paying in your local car market
           </p>
           <div className="flex flex-col gap-4">
             <div className="flex-1">

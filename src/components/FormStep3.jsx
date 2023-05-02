@@ -55,7 +55,7 @@ function Step3({
 
       <div className="form-control w-full">
         <label htmlFor="fees" className="label">
-          <span className="label-text">fees</span>
+          <span className="label-text">other fees</span>
         </label>
         <CurrencyInput className="input input-bordered" name="fees" prefix="$" defaultValue={formData.fees || ''} onValueChange={(value, name) => setFormData((prevState) => ({ ...prevState, [name]: value }))} />
       </div>
