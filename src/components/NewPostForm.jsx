@@ -106,7 +106,7 @@ function NewPostForm() {
   }
 
   return (
-    <div className="hero mt-20 md:mt-28 lg:mt-72 bg-base-200">
+    <div className="hero mt-20 md:mt-28 lg:mt-52 bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse w-full">
         <div className="card flex-shrink-0 w-full max-w-xs sm:max-w-lg shadow-2xl bg-base-100">
           <div className="card-body">

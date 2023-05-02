@@ -42,7 +42,7 @@ function Step1({
 
       <div className="form-control w-full">
         <label htmlFor="condition" className="label">
-          <span className="label-text">new or used?</span>
+          <span className="label-text">condition</span>
         </label>
         <select
           id="condition"
@@ -53,7 +53,7 @@ function Step1({
         >
           <option>select one</option>
           <option>New</option>
-          <option>Used</option>
+          {/* <option>Used</option> */}
         </select>
       </div>
     </>
