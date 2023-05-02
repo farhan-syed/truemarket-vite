@@ -99,7 +99,7 @@ function Search() {
   };
 
   return (
-    <div className="container mx-auto min-h-screen bg-base-200">
+    <div className="flex min-h-screen flex-col mx-auto bg-base-200">
       <NavigationBar />
       <SearchInput callback={searchCallback} />
       <Card list={list} />
