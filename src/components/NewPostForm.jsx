@@ -6,6 +6,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import Step1 from './FormStep1';
 import Step2 from './FormStep2';
 import Step3 from './FormStep3';
+import NavigationBar from './NavigationBar';
 
 function NewPostForm() {
   const steps = 3;
@@ -23,7 +24,7 @@ function NewPostForm() {
     engine: '',
     options: '',
     msrp: null,
-    down_payment: null,
+    discount: null,
     tax: null,
     market_adjustment: null,
     fees: null,
@@ -77,7 +78,7 @@ function NewPostForm() {
       setPage((current) => current + 1);
     } else if (page === 1 && (formData.year !== '' && formData.year !== 'select') && formData.make !== '' && formData.model !== '' && formData.trim !== '' && formData.transmission !== '' && formData.engine !== '') {
       setPage((current) => current + 1);
-    } else if (page === 2 && formData.options !== '' && formData.msrp !== null && formData.down_payment !== null && formData.tax !== null && formData.market_adjustment !== null && formData.fees !== null) {
+    } else if (page === 2 && formData.options !== '' && formData.msrp !== null && formData.discount !== null && formData.tax !== null && formData.market_adjustment !== null && formData.fees !== null) {
       setPage((current) => current + 1);
     }
   }
@@ -86,6 +87,8 @@ function NewPostForm() {
   const { user } = useAuth0();
   function createPost() {
     const url = `${import.meta.env.VITE_API_URL}/api/posts`;
+    const pDate = new Date(formData.purchase_date);
+    formData.purchase_date = pDate.toUTCString();
     const data = new FormData();
     data.append('body', JSON.stringify(formData));
     data.append('file', image);
@@ -106,7 +109,7 @@ function NewPostForm() {
   }
 
   return (
-    <div className="hero mt-5 bg-base-200">
+    <div className="hero min-h-screen mt-5 pb-10 bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse w-full">
         <div className="card flex-shrink-0 w-full max-w-xs sm:max-w-lg shadow-2xl bg-base-100">
           <div className="card-body">

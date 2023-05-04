@@ -1,5 +1,6 @@
 import axios from 'axios';
 import useSWR from 'swr';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
@@ -15,28 +16,28 @@ function formatMoney(num) {
   }).format(amount);
 }
 
-function totalCost(msrp, marketAdjustment, fees, tax) {
-  const total = msrp + marketAdjustment + fees + tax;
+function totalCost(msrp, market_adjustment, doc_fee, tax, discount) {
+  const total = (msrp + market_adjustment + doc_fee + tax) - discount;
   return formatMoney(total);
 }
 
 function CardItem({ item }) {
-  const date = new Date(item.purchase_date);
+  const dt = moment(item.purchase_date).format('MMMM Do, YYYY');
   return (
-    <div className="card-body bg-base-100 shadow-xl">
+    <div className="card-body bg-base-100 shadow-md">
       <div className="flex justify-between">
         <div>
           <h2 className="card-title"><div className="badge badge-primary">{item.condition}</div></h2>
         </div>
         <div className="order-last">
-          <p className="font-light">{date.toLocaleDateString()}</p>
+          <p className="font-light">{dt}</p>
         </div>
       </div>
       <h2 className="card-title">
         {`${item.car.year} ${item.car.make} ${item.car.trim}`}
       </h2>
       <p>{item.options}</p>
-      <p>{totalCost(item.msrp, item.market_adjustment, item.fees, item.tax)}</p>
+      <p>{totalCost(item.msrp, item.market_adjustment, item.fees, item.tax, item.discount)}</p>
       <div className="card-actions justify-end">
         <Link
           to={`/post/${item.id}`}
@@ -73,11 +74,13 @@ function Posts() {
   }
   return (
     isAuthenticated && (
-    <div className="container mx-auto min-h-screen bg-base-200">
-      <NavigationBar />
-      <h1 className="text-5xl font-bold pt-16 px-16 2xl:px-72">My Posts</h1>
-      <Card list={posts} />
-    </div>
+      <div className="container mx-auto">
+        <NavigationBar />
+        <div className="min-h-screen bg-base-200">
+          <h1 className="text-5xl font-bold pt-16 px-16 2xl:px-72">My Posts</h1>
+          <Card list={posts} />
+        </div>
+      </div>
     )
   );
 }

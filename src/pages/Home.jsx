@@ -3,7 +3,7 @@ import HomeHero from '../components/HomeHero';
 
 function Home() {
   return (
-    <div className="container h-screen mx-auto">
+    <div className="container mx-auto">
       <NavigationBar />
       <HomeHero />
     </div>

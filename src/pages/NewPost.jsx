@@ -11,7 +11,7 @@ function NewPost() {
 
   if (isAuthenticated) {
     return (
-      <div className="flex min-h-screen flex-col mx-auto">
+      <div className="container mx-auto">
         <NavigationBar />
         <NewPostForm />
       </div>

@@ -12,12 +12,12 @@ function HomeHero() {
   }
 
   return (
-    <div className="hero mt-20 md:mt-28 lg:mt-72">
+    <div className="hero h-screen">
       <div className="hero-content text-center">
         <div className="mx-auto">
-          <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold">Avoid Overpaying</h1>
+          <h1 className="text-4xl md:text-6xl font-bold">Avoid Overpaying</h1>
           <p className="my-6 text-md md:text-lg lg:text-2xl">
-            find out what others are paying in your local car market
+            Find out what others are paying in your local car market
           </p>
           <div className="flex flex-col gap-4">
             <div className="flex-1">
