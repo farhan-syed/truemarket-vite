@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import moment from 'moment';
 import NavigationBar from '../components/NavigationBar';
 
 function formatMoney(num) {
@@ -20,7 +21,7 @@ function SearchInput(props) {
     <div className="grid grid-row-1 place-content-center my-20">
       <div className="form-control">
         <div className="input-group">
-          <input type="text" placeholder="Search 'BMW M550i in 92602'" className="input input-bordered border-2 w-auto md:w-96" onChange={(e) => { setSearchText(e.target.value); }} />
+          <input type="text" placeholder="'BMW M550i in 92602'" className="input input-bordered border-2 w-auto md:w-96" onChange={(e) => { setSearchText(e.target.value); }} />
           <button
             type="button"
             className="btn btn-square"
@@ -43,15 +44,15 @@ function SearchInput(props) {
 }
 
 function CardItem({ item }) {
-  const date = new Date(item.purchase_date);
+  const dt = moment(item.purchase_date).format('MMMM Do, YYYY');
   return (
-    <div className="card-body bg-base-100 shadow-xl">
+    <div className="card-body bg-base-100 shadow-md">
       <div className="flex justify-between">
         <div>
           <h2 className="card-title"><div className="badge badge-primary">{item.condition}</div></h2>
         </div>
         <div className="order-last">
-          <p className="font-light">{date.toLocaleDateString()}</p>
+          <p className="font-light">{dt}</p>
         </div>
       </div>
       <h2 className="card-title">
@@ -99,10 +100,12 @@ function Search() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col mx-auto bg-base-200">
+    <div className="container mx-auto bg-base-200">
       <NavigationBar />
-      <SearchInput callback={searchCallback} />
-      <Card list={list} />
+      <div className="min-h-screen">
+        <SearchInput callback={searchCallback} />
+        <Card list={list} />
+      </div>
     </div>
   );
 }

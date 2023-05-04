@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import useSWR from 'swr';
+import moment from 'moment';
 
 import NavigationBar from '../components/NavigationBar';
 
@@ -34,25 +35,27 @@ function Post() {
     }).format(amount);
   }
 
-  function totalCost(msrp, market_adjustment, doc_fee, tax) {
-    const total = msrp + market_adjustment + doc_fee + tax;
+  function totalCost(msrp, market_adjustment, doc_fee, tax, discount) {
+    const total = (msrp + market_adjustment + doc_fee + tax) - discount;
     return formatMoney(total);
   }
 
-  const date = new Date(post.purchase_date);
+  const dt = moment(post.purchase_date).format('MMMM Do, YYYY');
+
   return (
     <div className="container mx-auto">
       <NavigationBar />
-      <div className="hero min-h-screen bg-base-200 mt-7">
-        <div className="hero-content flex-col lg:flex-col">
+      <div className="hero min-h-screen bg-base-200">
+        <div className="hero-content flex-col">
           <div className="w-full">
 
-            <div className="flex justify-between">
+            <div className="flex justify-between mb-3">
               <div>
                 <span className="badge badge-primary">{post.condition}</span>
               </div>
               <div className="order-last">
-                <p className="font-medium">{date.toLocaleDateString()}</p>
+                <p className="font-medium">Purchased:</p>
+                <p className="font-normal">{dt}</p>
               </div>
             </div>
 
@@ -77,7 +80,7 @@ function Post() {
             <img src={post.image_url} className="object-scale-down rounded-lg shadow-2xl mb-4" alt="Purchase Info" />
           </div>
 
-          <div className="stats stats-vertical xl:stats-horizontal bg-secondary text-secondary-content dark:text-primary-content w-full">
+          <div className="stats stats-vertical xl:stats-horizontal bg-secondary text-secondary-content dark:text-primary-content w-full xl:w-fit">
             <div className="stat">
               <div className="stat-title">MSRP</div>
               <div className="stat-value">{formatMoney(post.msrp)}</div>
@@ -91,12 +94,18 @@ function Post() {
               <div className="stat-value">{formatMoney(post.market_adjustment)}</div>
             </div>
             <div className="stat">
+              <div className="stat-title">Discount</div>
+              <div className="stat-value">
+                {formatMoney(post.discount)}
+              </div>
+            </div>
+            <div className="stat">
               <div className="stat-title">Other Fees</div>
               <div className="stat-value">{formatMoney(post.fees)}</div>
             </div>
             <div className="stat bg-success text-primary dark:text-black">
               <div className="stat-title">Total</div>
-              <div className="stat-value">{totalCost(post.msrp, post.market_adjustment, post.fees, post.tax)}</div>
+              <div className="stat-value">{totalCost(post.msrp, post.market_adjustment, post.fees, post.tax, post.discount)}</div>
             </div>
           </div>
 

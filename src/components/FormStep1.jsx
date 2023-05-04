@@ -1,11 +1,25 @@
+import moment from 'moment';
+
 function Step1({
   formData, setFormData,
 }) {
   const handleChange = (event) => {
     const { name, value } = event.target;
+
     setFormData((prevState) => ({
       ...prevState,
       [name]: value,
+    }));
+  };
+
+  const handleDateChange = (event) => {
+    const { name, value } = event.target;
+
+    const date = moment(value).utc().format();
+
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: date,
     }));
   };
 
@@ -20,8 +34,7 @@ function Step1({
           type="date"
           name="purchase_date"
           className="input input-bordered"
-          value={formData.purchase_date}
-          onChange={handleChange}
+          onChange={handleDateChange}
         />
       </div>
 
