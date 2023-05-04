@@ -57,7 +57,7 @@ function Step3({
         <label htmlFor="market_adjustment" className="label">
           <span className="label-text">discount</span>
         </label>
-        <CurrencyInput className="input input-bordered" name="discount" prefix="-$" defaultValue={formData.discount || ''} onValueChange={(value, name) => setFormData((prevState) => ({ ...prevState, [name]: value }))} />
+        <CurrencyInput className="input input-bordered" name="discount" prefix="$" defaultValue={formData.discount || ''} onValueChange={(value, name) => setFormData((prevState) => ({ ...prevState, [name]: value }))} />
       </div>
 
       <div className="form-control w-full">
