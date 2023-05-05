@@ -43,72 +43,79 @@ function Post() {
   const dt = moment(post.purchase_date).format('MMMM Do, YYYY');
 
   return (
-    <div className="container mx-auto">
-      <NavigationBar />
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col">
-          <div className="w-full">
+    <div className="container mx-auto min-h-screen flex flex-col">
+      <div className="flex items-center justify-between">
+        <NavigationBar />
+      </div>
 
-            <div className="flex justify-between mb-3">
+      <div className="relative flex flex-grow">
+        <div className="flex-1">
+          <div className="hero h-full bg-base-200">
+            <div className="hero-content flex-col">
+              <div className="w-full">
+
+                <div className="flex justify-between mb-3">
+                  <div>
+                    <span className="badge badge-primary">{post.condition}</span>
+                  </div>
+                  <div className="order-last">
+                    <p className="font-medium">Purchased:</p>
+                    <p className="font-normal">{dt}</p>
+                  </div>
+                </div>
+
+                <h1 className="text-5xl lg:text-6xl font-semibold">
+                  {post.car.year}
+                  {' '}
+                  {post.car.make}
+                  {' '}
+                  {post.car.trim}
+                </h1>
+                <p className="py-1">
+                  {post.car.transmission}
+                </p>
+                <p className="py-1">
+                  {post.car.engine}
+                </p>
+                <p className="py-1">
+                  {badges()}
+                </p>
+              </div>
               <div>
-                <span className="badge badge-primary">{post.condition}</span>
+                <img src={post.image_url} className="object-scale-down rounded-lg shadow-2xl mb-4" alt="Purchase Info" />
               </div>
-              <div className="order-last">
-                <p className="font-medium">Purchased:</p>
-                <p className="font-normal">{dt}</p>
-              </div>
-            </div>
 
-            <h1 className="text-5xl lg:text-6xl font-semibold">
-              {post.car.year}
-              {' '}
-              {post.car.make}
-              {' '}
-              {post.car.trim}
-            </h1>
-            <p className="py-1">
-              {post.car.transmission}
-            </p>
-            <p className="py-1">
-              {post.car.engine}
-            </p>
-            <p className="py-1">
-              {badges()}
-            </p>
-          </div>
-          <div>
-            <img src={post.image_url} className="object-scale-down rounded-lg shadow-2xl mb-4" alt="Purchase Info" />
-          </div>
-
-          <div className="stats stats-vertical xl:stats-horizontal bg-secondary text-secondary-content dark:text-primary-content w-full xl:w-fit">
-            <div className="stat">
-              <div className="stat-title">MSRP</div>
-              <div className="stat-value">{formatMoney(post.msrp)}</div>
-            </div>
-            <div className="stat">
-              <div className="stat-title">Tax</div>
-              <div className="stat-value">{formatMoney(post.tax)}</div>
-            </div>
-            <div className="stat">
-              <div className="stat-title">Market Adjustment</div>
-              <div className="stat-value">{formatMoney(post.market_adjustment)}</div>
-            </div>
-            <div className="stat">
-              <div className="stat-title">Discount</div>
-              <div className="stat-value">
-                {formatMoney(post.discount)}
+              <div className="stats stats-vertical xl:stats-horizontal bg-secondary text-secondary-content dark:text-primary-content w-full xl:w-fit">
+                <div className="stat">
+                  <div className="stat-title">MSRP</div>
+                  <div className="stat-value">{formatMoney(post.msrp)}</div>
+                </div>
+                <div className="stat">
+                  <div className="stat-title">Tax</div>
+                  <div className="stat-value">{formatMoney(post.tax)}</div>
+                </div>
+                <div className="stat">
+                  <div className="stat-title">Market Adjustment</div>
+                  <div className="stat-value">{formatMoney(post.market_adjustment)}</div>
+                </div>
+                <div className="stat">
+                  <div className="stat-title">Discount</div>
+                  <div className="stat-value">
+                    {formatMoney(post.discount)}
+                  </div>
+                </div>
+                <div className="stat">
+                  <div className="stat-title">Other Fees</div>
+                  <div className="stat-value">{formatMoney(post.fees)}</div>
+                </div>
+                <div className="stat bg-success text-primary dark:text-black">
+                  <div className="stat-title">Total</div>
+                  <div className="stat-value">{totalCost(post.msrp, post.market_adjustment, post.fees, post.tax, post.discount)}</div>
+                </div>
               </div>
-            </div>
-            <div className="stat">
-              <div className="stat-title">Other Fees</div>
-              <div className="stat-value">{formatMoney(post.fees)}</div>
-            </div>
-            <div className="stat bg-success text-primary dark:text-black">
-              <div className="stat-title">Total</div>
-              <div className="stat-value">{totalCost(post.msrp, post.market_adjustment, post.fees, post.tax, post.discount)}</div>
+
             </div>
           </div>
-
         </div>
       </div>
     </div>

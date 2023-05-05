@@ -12,7 +12,7 @@ function HomeHero() {
   }
 
   return (
-    <div className="hero h-screen">
+    <div className="hero h-full">
       <div className="hero-content text-center">
         <div className="mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold">Avoid Overpaying</h1>

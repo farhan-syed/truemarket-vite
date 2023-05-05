@@ -74,11 +74,15 @@ function Posts() {
   }
   return (
     isAuthenticated && (
-      <div className="container mx-auto">
-        <NavigationBar />
-        <div className="min-h-screen bg-base-200">
-          <h1 className="text-5xl font-bold pt-16 px-16 2xl:px-72">My Posts</h1>
-          <Card list={posts} />
+      <div className="container mx-auto min-h-screen flex flex-col">
+        <div className="flex items-center justify-between">
+          <NavigationBar />
+        </div>
+        <div className="relative flex flex-grow">
+          <div className="flex-1">
+            <h1 className="text-5xl font-bold pt-16 px-16 2xl:px-72">My Posts</h1>
+            <Card list={posts} />
+          </div>
         </div>
       </div>
     )
