@@ -100,11 +100,15 @@ function Search() {
   };
 
   return (
-    <div className="container mx-auto bg-base-200">
-      <NavigationBar />
-      <div className="min-h-screen">
-        <SearchInput callback={searchCallback} />
-        <Card list={list} />
+    <div className="container mx-auto min-h-screen flex flex-col bg-base-200">
+      <div className="flex items-center justify-between">
+        <NavigationBar />
+      </div>
+      <div className="relative flex flex-grow">
+        <div className="flex-1">
+          <SearchInput callback={searchCallback} />
+          <Card list={list} />
+        </div>
       </div>
     </div>
   );
